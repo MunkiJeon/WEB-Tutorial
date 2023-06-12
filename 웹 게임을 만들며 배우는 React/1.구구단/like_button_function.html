@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>웹게임</title>
+</head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<!--<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>-->
+<!--<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>-->
+<script type="text/babel">
+  'use strict';
+
+  class LikeButton extends React.Component {
+    // constructor(props) {
+    //   super(props);
+    //   this.state = {liked: false};
+    // }
+    state = {liked: false};
+
+    onClickButton = () =>{
+        //this.state.liked = true;
+        this.setState({liked: true});
+    }
+    render() {
+      if (this.state.liked) {
+        return 'You liked this.';
+      }
+
+      return (//태그들을 꼭 소문자
+        <button onClick={  /*() => this.setState({liked: true})*/
+                        this.onClickButton}>
+          Like
+        </button>//javaScript에서는 원래라면 안됨 -> babel에 의해 변환되어 가능
+      );
+    }
+  }
+</script>
+<script type="text/babel">
+  //ReactDOM.render(<LikeButton/>, document.querySelector('#root')); 리액트 17버전
+  ReactDOM.createRoot(document.querySelector('#root')).render(<LikeButton/>);//리액트 18버전
+</script>
+</body>
+</html>
