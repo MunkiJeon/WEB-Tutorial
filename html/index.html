@@ -5,8 +5,66 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="css/basic.css">
     </head>
+    <script>
+        function modeChange(self){
+            var target = document.querySelector('body');
+            if(self.value === 'day' ){
+                target.style.backgroundColor = 'black';
+                target.style.color = 'white'
+                self.value = 'night'
+    
+                var alist = document.querySelector('a');
+                var i = 0;
+                while(i<alist.length){
+                    alist[i].style.color = 'white';
+                    i = i+1;
+                }
+            }else{
+                target.style.backgroundColor = 'white';
+                target.style.color = 'black'
+                self.value = 'day' 
+    
+                var alist = document.querySelector('a');
+                var i = 0;
+                while(i<alist.length){
+                    alist[i].style.color = 'black';
+                    i = i+1;
+                }
+            }
+        }
+    </script>
 </html>
 <body>
+
+    <!-- 리팩토링 전
+        <input id="dark_mode" type="button" width="50px" value="day" onclick="
+        if(document.querySelector('#dark_mode').value === 'day' ){
+            document.querySelector('body').style.backgroundColor = 'black';
+            document.querySelector('body').style.color = 'white'
+            document.querySelector('#dark_mode').value = 'night' 
+        }else{
+            document.querySelector('body').style.backgroundColor = 'white';
+            document.querySelector('body').style.color = 'black'
+            document.querySelector('#dark_mode').value = 'day' 
+        }
+    "> --> 
+    <!-- 리팩토링후 -->
+    <!-- <input id="dark_mode" type="button" width="50px" value="day" onclick="
+        var target = document.querySelector('body');
+        if(this.value === 'day' ){
+            target.style.backgroundColor = 'black';
+            target.style.color = 'white'
+            this.value = 'night' 
+        }else{
+            target.style.backgroundColor = 'white';
+            target.style.color = 'black'
+            this.value = 'day' 
+        }
+    "> -->
+        <input id="dark_mode" type="button" width="50px" value="day" onclick="
+        modeChange(this);
+    ">
+
     <h1><a href="index.html" class="now">WEB</a></h1>
     <h3><a href="https://munkijeon.github.io/WEB-Basic/">GitHub Link</a></h3>
     <h3><a href="https://youtube.com/playlist?list=PLuHgQVnccGMDZP7FJ_ZsUrdCGH68ppvPb">생활코딩 WEB 기초강의</a></h3>
