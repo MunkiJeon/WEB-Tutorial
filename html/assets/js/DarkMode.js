@@ -27,12 +27,16 @@ var setColor = {
 
 function modeChange(self){
     var target = document.querySelector('body');
-    if( self.value === 'day' ){
-        self.value = 'night';
+    if( self.value === 'Light' ){
+        self.value = 'Dark';
+        self.innerText = 'Dark';
+        self.className = 'btn btn-outline-neutral';
         setColor.ModeSetColor('white','black','white');
         // ModeSetColor('white','black','white');
     }else{
-        self.value = 'day';
+        self.value = 'Light';
+        self.innerText = 'Light';
+        self.className = 'btn btn-default';
         setColor.ModeSetColor('black','white','black');
         // ModeSetColor('black','white','black');
     }
