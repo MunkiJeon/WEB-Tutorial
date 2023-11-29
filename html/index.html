@@ -4,65 +4,101 @@
 <head>
     <title>About MK's Page</title>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="./assets/js/DarkMode.js"></script>
-    <!--     Fonts and icons     -->
+    
+    <!-- Fonts and icons -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <!-- CSS Files -->
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-    
-</head>
-<!-- Bootstrap core JS-->
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
-<body class="index-page sidebar-collapse">
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/plus.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // "Home" 링크를 클릭하면 스크롤을 맨 위로 이동시키는 함수
+            document.querySelector('.navbar-brand').addEventListener('click', function (event) {
+                event.preventDefault();
+                // smooth한 스크롤을 위해 behavior 옵션을 'smooth'로 설정
+                window.scroll({ top: 0, left: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</head>
+
+<body class="index-page sidebar-collapse bg-dark">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
+        <div class="fixed top-0 w-screen z-50" x-data="indicator" @scroll.window="indicate">
+            <div class="w-screen">
+                <div class="w-0 h-0.5 bg-h-900 rounded bg-h-800 dark:bg-h-200" x-ref="indicator"
+                    style="width: 17.4095%;"></div>
+            </div>
+        </div>
         <div class="container">
-            <div class="navbar-translate">
-                <button type="button" class="btn btn-light" value="Light" onclick="modeChange(this);">Light</button>
-                <a class="navbar-brand" href="https://demos.creative-tim.com/paper-kit/index.html" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
-                Paper Kit 2
-                </a>
+            <div class="navbar-translate d-flex">
+                <button class="btn btn-secondary" onclick="scrollToTop();" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
+                    Home
+                </button>
+                <!-- 첫 번째 드롭다운 - FrontEnd -->
+                <div class="dropdown ml-2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="frontEndDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        FrontEnd
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="frontEndDropdown">
+                        <a class="dropdown-item" href="#">HTML</a>
+                        <a class="dropdown-item" href="#">CSS</a>
+                        <a class="dropdown-item" href="#">JavaScript</a>
+                    </div>
+                </div>
+                <!-- 두 번째 드롭다운 - BackEnd -->
+                <div class="dropdown ml-2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="backEndDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        BackEnd
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="backEndDropdown">
+                        <a class="dropdown-item" href="#">Java</a>
+                    </div>
+                </div>
+                <!-- 나머지 코드는 그대로 유지 -->
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
                 </button>
             </div>
             <div class="collapse navbar-collapse justify-content-end" id="navigation">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
+                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
+                            href="#" target="_blank">
+                            <i class="fa fa-instagram"></i>
+                            <p class="d-lg-none">Instagram</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
+                        <a href="#" target="_blank" class="nav-link">
+                            <i class="fa fa-github"></i>
+                            <p class="d-lg-none">GitHub</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
+                        <a href="#" target="_blank" class="nav-link">
+                            <i class="nc-icon nc-book-bookmark"></i>
+                            Documentation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" target="_blank" class="btn btn-danger btn-round" rel="tooltip" title="Follow us on Instagram" data-placement="bottom">
+                            Follow to ProKi
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit" target="_blank">
-                        <i class="fa fa-github"></i>
-                        <p class="d-lg-none">GitHub</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/product/paper-kit-2-pro?ref=pk2-free-local" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
                     </li>
                 </ul>
             </div>
@@ -71,71 +107,106 @@
     <!-- End Navbar -->
     <!-- Header-->
     <header>
-    </header>
         <div class="page-header section-dark" style="background-image: url('./assets/img/antoine-barres.jpg')">
             <div class="filter"></div>
             <div class="content-center">
-            <div class="container">
-                <div class="title-brand">
-                <h1 class="presentation-title">About MK's Page</h1>
-                <div class="fog-low">
-                    <img src="./assets/img/fog-low.png" alt="">
+                <div class="container">
+                    <div class="title-brand">
+                        <h1 class="presentation-title">About MK's Page</h1>
+                        <div class="fog-low">
+                            <img src="./assets/img/fog-low.png" alt="">
+                        </div>
+                        <div class="fog-low right">
+                            <img src="./assets/img/fog-low.png" alt="">
+                        </div>
+                    </div>
+                    <h2 class="presentation-subtitle text-center">전문적인 엔지니어, 현실을 코드로 만들어내는 역량을 갖추고 있습니다. 후후...</h2>
                 </div>
-                <div class="fog-low right">
-                    <img src="./assets/img/fog-low.png" alt="">
-                </div>
-                </div>
-                <h2 class="presentation-subtitle text-center">Make your mark with a Free Bootstrap 4 UI Kit! </h2>
-            </div>
             </div>
             <div class="moving-clouds" style="background-image: url('./assets/img/clouds.png'); "></div>
-            <h6 class="category category-absolute">Designed and coded by
-            <a href="https://www.creative-tim.com" target="_blank">
-                <img src="./assets/img/creative-tim-white-slim2.png" class="creative-tim-logo">
-            </a>
-            </h6>
         </div>
     </header>
-    
-    <h1><a class="nav-link active" href="index.html">WEB</a></h1>
-    <h3><a class="nav-link" href="https://munkijeon.github.io/WEB-Tutorial/">GitHub Link</a></h3>
-    <h3><a class="nav-link" href="https://youtube.com/playlist?list=PLuHgQVnccGMDZP7FJ_ZsUrdCGH68ppvPb">생활코딩 WEB
-            기초강의</a></h3>
-    <!--<h1><a href="index.html"><font color="red">WEB</font></a></h1>
-    <h3><a href="https://munkijeon.github.io/WEB-Basic/"><font color="red">GitHub Link</font></a></h3>
-    <h3><a href="https://youtube.com/playlist?list=PLuHgQVnccGMDZP7FJ_ZsUrdCGH68ppvPb"><font color="red">생활코딩 WEB 기초강의</font></a></h3>-->
-
-    <div id="grid">
-        <ol>
-            <li><a href="1.html">HTML</a></li>
-            <li><a href="2.html">CSS</a></li>
-            <li><a href="3.html">JavaScript</a></li>
-        </ol>
-        <div id="article">
-            <iframe width="100%" height="400" src="https://www.youtube.com/embed/7T7r_oSp0SE"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-
-            </iframe>
-            <h2>WEB</h2>
-            <p>
-                <a href="https://html.spec.whatwg.org/">html.spec.whatwg.org</a><br>
-                The HyperText Markup Language or HTML is the standard markup language<br>
-                for documents designed to be displayed in a web browser.<br>
-                It is often assisted by technologies such as <br>
-                Cascading Style Sheets and scripting languages such as JavaScript.
-            </p>
+    <!-- Header -->
+    <!-- main -->
+    <main class="py-5" style="background-image: url('./assets/img/bruno-abatti.jpg'); background-size: cover;">
+        <div class="container">
+            <div class="row">
+                <!-- Card 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">첫번째 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">무한 긍정</h6>
+                            <p class="card-text">어떠한 상황에서도 포지하지 않고 긍정적으로 생각함!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">두번째 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">다른 소제목</h6>
+                            <p class="card-text">다른 장점에 대한 내용</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">세번째 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">다른 소제목</h6>
+                            <p class="card-text">다른 내용</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">다른 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">다른 소제목</h6>
+                            <p class="card-text">다른 내용</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">세번째 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">다른 소제목</h6>
+                            <p class="card-text">다른 내용</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img class="card-img-top" src="https://via.placeholder.com/300" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">다른 장점</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">다른 소제목</h6>
+                            <p class="card-text">다른 내용</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
+    </main>
+    <!-- main -->
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
         </div>
     </footer>
-    
 </body>
 
 </html>
